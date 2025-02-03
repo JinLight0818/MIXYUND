@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .page {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #main-page {
+            display: flex;
+            background: linear-gradient(45deg, #1a1a1a, #2d2d2d);
+            color: #fff;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            animation: titleGlow 2s infinite alternate;
+        }
+
+        .btn {
+            background: #ff4081;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 64, 129, 0.5);
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(255, 64, 129, 0.8);
+        }
+
+        #cat-page {
+            background: linear-gradient(180deg, #87CEEB, #E0FFFF);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cat-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .cat-image {
+            width: 473px;
+            height: 631px;
+            object-fit: contain;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            animation: catBounce 2s infinite;
+        }
+
+        .dedication {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 2rem;
+            color: #ff4081;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .floating-emoji {
+            position: absolute;
+            animation: float 5s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes titleGlow {
+            from {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            }
+        }
+
+        @keyframes catBounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page" id="main-page">
+        <h1 class="title">Сайн байна уу Ундрам</h1>
+        <button class="btn" onclick="showCat()">Энэ дээр дарна уу</button>
+    </div>
+
+    <div class="page" id="cat-page">
+        <h2 class="dedication">MEOW! 🐱</h2>
+        <div class="cat-container">
+            <img src="https://raw.githubusercontent.com/JinLight0818/MIXYUND/main/Most_Beautiful_White_Cat_Collection.jpg" alt="Cute Cat" class="cat-image">
+        </div>
+    </div>
+
+    <script>
+        function showCat() {
+            document.getElementById('main-page').style.display = 'none';
+            document.getElementById('cat-page').style.display = 'flex';
+
+            const emojis = ['😺', '😻', '😽', '😸', '😹', '😼', '🐱', '🐾', '🌸', '💖'];
+            const catPage = document.getElementById('cat-page');
+
+            for (let i = 0; i < 20; i++) {
+                const emoji = document.createElement('div');
+                emoji.classList.add('floating-emoji');
+                emoji.style.left = Math.random() * 100 + 'vw';
+                emoji.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                emoji.style.fontSize = (Math.random() * 24 + 24) + 'px';
+                emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                catPage.appendChild(emoji);
+            }
+        }
+    </script>
+</body>
+</html>
